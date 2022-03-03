@@ -22,9 +22,8 @@ function Sidebar({ condition, func }) {
         className="closeicon"
         style={
           condition
-            ? { display: "block", transition: "all .8s", zIndex: "4" }
-            : { display: "none", transition: "all .8s" }
-
+            ? { display: "block", transition: "all .8s" }
+            : { display: "none", transition: "all .5s" }
         }
         onClick={func}
       />

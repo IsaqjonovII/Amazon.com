@@ -1,16 +1,18 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import './Login.css'
+import { useHistory } from 'react-router-dom';
 import { AiFillCaretRight } from 'react-icons/ai'
-import { Link } from "react-router-dom"
-import { useHistory } from "react-router-dom"
-import { auth } from '../../firebase/firebase'
+import { Link } from "react-router-dom";
+import { FcGoogle } from 'react-icons/fc';
+import { auth, googleProvider, firebase } from '../../firebase/firebase';
 
 const Login = () => {
-    const [email, setEmail] = useState("")
-    const [password, setPassword] = useState("")
-    const history = useHistory()
-    const login = (e) => {
-        e.preventDefault()
+    const history = useHistory();
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [number, setNumber] = useState('');
+    const loginUser = (e) => {
+        e.preventDefault();
         auth.signInWithEmailAndPassword(email, password)
             .then(user => {
                 if(user){
@@ -19,26 +21,56 @@ const Login = () => {
             })
             .catch(err => console.log(err))
     }
-  
+
+    const signInwithGoogle = () => {
+        auth.signInWithPopup(googleProvider)
+            .then(user => console.log(user))
+            .catch(err => console.log(err));
+    }
+
+    const verifyThePhone = () => {
+        let recaptcha = new firebase.auth.RecaptchaVerifier('recaptcha-container');
+        firebase.auth().signInWithPhoneNumber(number, recaptcha)
+            .then(e => {
+              let code = prompt("Iltimos konfirmatsiya kodni kiriting")
+              if(code === null){
+                  return
+              }
+              e.confirm(code).then(user => {
+                  console.log(user)
+              })
+            })
+            .catch(err => console.log(err));
+
+    }
+
     return (
         <div className="login">
             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/2560px-Amazon_logo.svg.png" alt="" />
-            <form onSubmit={login}>
+            <form onSubmit={loginUser}>
                 <div className="sign_in">
                     <h1>Sign-In</h1>
                     <h5>Email or mobile phone number</h5>
-                    <input type="email" placeholder='Email' value={email} onChange={(e) => setEmail(e.target.value)}/>
-                     <input
-              type="password"
-              minLength="8"
-              placeholder="At least 6 characters" onChange={e => setPassword(e.target.value)} value={password}
-            />
-                    <button>Continue</button>
+                    <input type="email" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)}/>
+                    <h5>Password</h5>
+                        <input
+                        type="password"
+                        placeholder="At least 6 characters"
+                        required
+                        value={password}
+                        onChange={e => setPassword(e.target.value)}
+                        minLength={8}
+                        />
+                    <button className="auth_btn" type="submit">Continue</button>
                     <span>By continuing, you agree to Amazon's <a href="##"> Conditions of Use and Privacy Notice.</a></span>
                     <a href="##"><AiFillCaretRight/> Need help?</a>
                 </div>
             </form>
+            <button onClick={signInwithGoogle}> <FcGoogle/> Sign in with Google</button>
             <div className="new_amazon">
+                <input type="text" placeholder="Type your phonenumber" value={number} onChange={(e) => setNumber(e.target.value)}/>
+                <div id="recaptcha-container"></div>
+                <button onClick={verifyThePhone}>Verify the phone</button>
                     <div className="line"></div>
                     <span>New to Amazon?</span>
                     <div className="line"></div>

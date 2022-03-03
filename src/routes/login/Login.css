@@ -14,7 +14,7 @@
 
 .login > form {
     width: 348px;
-    height: 280px;
+    height: auto;
     display: grid;
     place-items: center;
     border: 1.5px solid #dddddd;
@@ -34,22 +34,24 @@
 }
 
 .sign_in input {
-    height: 31px;
+    height: 40px;
+    min-height: 40px;
     border: 1px solid #a8a8a8;
     border-radius: 3px;
-    margin-top: -10px;
+    margin: 10px 0px;
     outline: none;
     text-indent: 10px;
 }
 
-.sign_in button {
-    height: 31px;
+.auth_btn {
+    height: 40px;
     background: #f0c14b;
     border: 1px solid;
     border-color: #a88734 #9c7e31 #846a29;
     color: #111;
     border-radius: 3px;
     font-weight: 600;
+    margin: 20px 0px;
 }
 
 .sign_in span {
@@ -68,6 +70,7 @@
     font-size: 12px;
     display: flex;
     align-items: center;
+    margin: 10px 0px;
 }
 
 .new_amazon {

@@ -1,15 +1,15 @@
 import React from 'react';
 import "./Footer.css";
-import { useLocation, Link } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { footer_data, footer_bottom, footer_copyrights } from '../../static/footer_data';
 
 function Footer() {
     const location = useLocation();
     return location.pathname === "/login" || location.pathname === "/account" ? <></> :
      <div className='footer'>
-         <Link  className='back_to' to="/">
+         <a href="#top"  className='back_to'>
              <button>Back to top</button>
-         </Link>
+         </a>
         <div className="footer_container">
             {
                 footer_data.map(footer_item =>
@@ -49,6 +49,7 @@ function Footer() {
                 </div>
             </div>
         </div>
+
     </div>;
 }
 

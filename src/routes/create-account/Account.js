@@ -1,25 +1,25 @@
-import React, {useState} from "react";
+import React,{ useState } from "react";
 import "./Account.css";
-import { auth } from "../../firebase/firebase"
+import { auth } from "../../firebase/firebase";
 import { AiFillCaretRight } from "react-icons/ai";
-import { useHistory } from "react-router-dom"
+import { useHistory } from 'react-router-dom';
 
 function Account() {
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
-  const history = useHistory()
+  const history = useHistory();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
-  const createAccout = (e) => {
-    e.preventDefault()
+
+  const createAccount = (e) => {
+    e.preventDefault();
     auth.createUserWithEmailAndPassword(email, password)
       .then(user => {
         if(user){
           history.push("/")
         }
       })
-      .catch(err => console.log(err))
+      .catch(err => console.log(err));
   }
-
   return (
     <div>
       <div className="account">
@@ -27,16 +27,19 @@ function Account() {
           src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/2560px-Amazon_logo.svg.png"
           alt=""
         />
-        <form onSubmit={createAccout} >
+        <form onSubmit={createAccount}>
           <div className="create_account">
             <h1>Create Account</h1>
             <h5>Mobile number or Email</h5>
-            <input type="email" placeholder="Email" onChange={e => setEmail(e.target.value)} value={email} />
+            <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required/>
             <h5>Password</h5>
             <input
               type="password"
-              minLength="8"
-              placeholder="At least 6 characters" onChange={e => setPassword(e.target.value)} value={password}
+              placeholder="At least 6 characters"
+              value={password}
+              onChange={e => setPassword(e.target.value)}
+              required
+              minLength={8}
             />
             <p className="password_notice">
               Passwords must be at least 6 characters.

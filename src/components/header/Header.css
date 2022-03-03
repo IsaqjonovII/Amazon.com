@@ -11,9 +11,11 @@
   width: 400px;
   height: 420px;
   background-color: #fff;
-  transform: translateX(210%) translateY(45%);
-  border-radius: 10px;
   position: absolute;
+  top: 30%;
+  left: 41%;
+  z-index: 10;
+  border-radius: 10px;
   display: none;
   z-index: 5;
   overflow: hidden;
@@ -40,40 +42,18 @@
   background-color: #ffd814;
 }
 
-.line_location {
-  display: flex;
-  align-items: center;
-}
-
-.line3 {
-  width: 160px;
-  height: 1px;
-  display: flex;
-  flex: 1;
-  border: 0.1px solid rgba(0, 0, 0, 0.192);
-  margin-top: 5px;
-}
-
-.line2 {
-  width: 90px;
-  height: 1px;
-  display: flex;
-  flex: 1;
-  border: 0.5px solid rgba(0, 0, 0, 0.192);
-  margin-top: 5px;
-}
-
 .btn_sd span {
   width: 100%;
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding-top: -5px;
 }
 
 .p {
   color: grey;
-  padding: 10px 10px;
+  padding: 10px 0;
 }
 
 .div_inp_btn input {
@@ -149,7 +129,6 @@
   margin: 0px 10px;
   color: #fff;
   border: 1px solid transparent;
-  cursor: pointer;
 }
 
 .header__delivery:hover {
@@ -203,8 +182,8 @@
   width: 100vw;
   position: fixed;
   left: 0;
-  opacity: 0;
   top: 0;
+  opacity: 0;
   transition: opacity 0.5s;
   height: 100vh;
   z-index: -1;
@@ -229,6 +208,7 @@
 .header__language:hover {
   cursor: pointer;
   border: 1px solid #fff;
+  z-index: 5;
 }
 
 .language__image {
@@ -342,6 +322,10 @@
 
 .account_list {
   text-decoration: none;
+}
+
+.account_list:hover {
+  z-index: 5;
 }
 
 .account_list:hover .signIn_hover {
@@ -524,4 +508,18 @@
 
 .signin_popup p a {
   text-decoration: none;
+}
+
+.apply {
+  width: auto;
+  height: auto;
+  padding: 10px 12px;
+  cursor: pointer;
+  color: #000;
+  font-size: 18px;
+  background-color: gold;
+  border-radius: 10px;
+  border: none;
+  margin-left: 315px;
+  margin-top: 20px;
 }

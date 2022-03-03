@@ -12,16 +12,19 @@ import Shopnow from "./routes/shopnow/Shopnow";
 import Products from "./routes/products/Products";
 import Cart from "./components/cart/Cart";
 import ProductInfo from "./routes/prdocuts_info/ProductInfo";
+import CreateProducts from "./routes/create-products/CreateProducts";
+import BackToTop from "./components/backtotop/BackToTop";
 
 function App() {
   const [sidebarActive, setSidebarActive] = useState(false);
   const sidebarChange = () => setSidebarActive(true);
   const of = () => setSidebarActive(false);
   document.title = "Amazon.com | Home";
-
+  sidebarActive ? document.body.style.overflow = "hidden" :  document.body.style.overflow = "auto"
   return (
     <Router>
       <>
+        <BackToTop/>
         <Header condition={sidebarActive} func={sidebarChange} />
         <Sidebar condition={sidebarActive} func={of} />
         <Switch>
@@ -32,14 +35,16 @@ function App() {
           <Route exact path="/seemore/products" component={Products} />
           <Route path="/shopnow" component={Shopnow} />
           <Route path="/cart" component={Cart} />
-          <Route path="/seemore/products/:productId" component={ProductInfo} />
+          <Route path="/new" component={CreateProducts} />
+          <Route path="/seemore/products/:productId" component={ProductInfo}/>
         </Switch>
         <Footer />
         <div
-          className={`fade ${sidebarActive ? "appear sticktop" : ""}`}
+          className={`fade ${sidebarActive ? "appear" : ""}`}
           onClick={() => setSidebarActive(false)}
         ></div>
       </>
+      
     </Router>
   );
 }

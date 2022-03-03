@@ -1,13 +1,20 @@
-import React from 'react';
+import React, { Suspense, lazy} from 'react';
 import ReactDOM from 'react-dom';
 import './styles/index.css';
-import App from './App';
+import "./language/i18next";
 import { BrowserRouter } from 'react-router-dom';
+import reducer, { initialState } from './context/reducer';
+import { StateProvider } from './context/StateProvider';
+const App = lazy(() => import('./App'));
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-      <App />
+     <StateProvider initialState={initialState} reducer={reducer}>
+      <Suspense fallback={<p>Loading the Content...</p>}>
+        <App />
+      </Suspense>
+     </StateProvider>
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')

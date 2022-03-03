@@ -4,8 +4,10 @@ import { Link } from "react-router-dom";
 import { HiOutlineLocationMarker, HiMenu } from "react-icons/hi";
 import { FiSearch, FiChevronDown, FiShoppingCart } from "react-icons/fi";
 import { useLocation } from "react-router-dom";
+import { useTranslation } from 'react-i18next';
 
 function Header({ func, condition }) {
+  const { i18n, t } = useTranslation();
   const [location2, setLocation2] = useState(false);
   let location = useLocation();
   console.log(location.pathname);
@@ -14,7 +16,13 @@ function Header({ func, condition }) {
       setSigInPopUp(false);
     }, 7000);
   }, []);
+  const selectLang = (lang) => {
+      i18n.changeLanguage(lang);
+  }
   const [sign, setSign] = useState(false);
+  const [deliverLocationValue, setDeliverLocationValue] = useState("");
+  const [hover, setHover] = useState(false);
+  const [locationBoshqacha, setLocationBoshqacha] = useState(false);
   const [signInPopUp, setSigInPopUp] = useState(true);
   const [searchbarActive, setSearchbarActive] = useState(false);
   const [languageActive, setLanguageActive] = useState(false);
@@ -23,7 +31,7 @@ function Header({ func, condition }) {
     <></>
   ) : (
     <>
-      <div className="header">
+      <div id="top"  className="header">
         <Link to="/">
           <div className="header__logo">
             <img
@@ -33,18 +41,25 @@ function Header({ func, condition }) {
             />
           </div>
         </Link>
-        <div className="header__delivery" onClick={() => setLocation2(true)}>
-          <p>Delivery</p>
+        <div
+          className="header__delivery"
+          onClick={() => {
+            setLocation2(true);
+            setLocationBoshqacha(false);
+          }}
+        >
+          <p>{t("1")}</p>
           <h3>
             {" "}
-            <HiOutlineLocationMarker /> Uzbekistan
+            <HiOutlineLocationMarker />{" "}
+            {locationBoshqacha ? deliverLocationValue : "Uzbekistan"}
           </h3>
         </div>
-        <div
+        <divm
           className="header__searchbar"
           style={
             searchbarActive
-              ? { zIndex: "5", boxShadow: "0px 0px 0px 3px #FF9900" }
+              ? { boxShadow: "0px 0px 0px 3px #FF9900", zIndex: "5" }
               : null
           }
         >
@@ -53,10 +68,28 @@ function Header({ func, condition }) {
             style={{ width: selectValue.length * 10 + "px" }}
             onChange={(e) => setSelectValue(e.target.value)}
           >
-            <option value="all departments">All departments</option>
+            <option value="all departments">{t("all")}</option>
             <option value="art & carfts">Arts & Crafts</option>
             <option value="automotive">Automotive</option>
             <option value="baby">Baby</option>
+            <option value="beauty & personal care">Beauty & Personal Care</option>
+            <option value="books">Books</option>
+            <option value="boy's fashion">Boy's Fashion</option>
+            <option value="comp uters">Computers</option>
+            <option value="deals">Deals</option>
+            <option value="digital music">Digital Music</option>
+            <option value="electroics">Electronics</option>
+            <option value="health household">Health & Household</option>
+            <option value="Home & kitchen">Home & Kitchen</option>
+            <option value="Indust r ientific">Industrial & Scientific</option>
+            <option value="kindle store">Kindle Store</option>
+            <option value="lu  gga ge">Luggage</option>
+            <option value="men's fashion">Men's fashion</option>
+            <option value="Movies & tv">Movies & TV</option>
+            <option value="music,cds&vindyls">Music, CDs & Vinyls</option>
+
+
+
           </select>
           <input
             type="text"
@@ -67,16 +100,24 @@ function Header({ func, condition }) {
             {" "}
             <FiSearch />{" "}
           </button>
-        </div>
+        </divm>
         <div
           className={`fade ${
             searchbarActive || languageActive || sign || location2
               ? "appear"
+              : hover === true
+              ? "fade"
               : ""
           }`}
+          style={
+            hover === true
+              ? { display: "none" }
+              : locationBoshqacha === true
+              ? { display: "none" }
+              : {}
+          }
           onClick={() => {
             setSearchbarActive(false);
-            setLocation2(false);
           }}
           onMouseOver={() => setLanguageActive(false)}
         ></div>
@@ -84,7 +125,6 @@ function Header({ func, condition }) {
           className="header__language"
           onMouseOver={() => setLanguageActive(true)}
           onMouseOut={() => setLanguageActive()}
-          style={languageActive ? { zIndex: "5" } : { zIndex: "0" }}
         >
           <img
             className="language__image"
@@ -102,32 +142,32 @@ function Header({ func, condition }) {
             <ul className="select__collection">
               <li className="collection__item">
                 <label htmlFor="en">
-                  <input type="radio" name="lang" id="en" /> English - EN{" "}
+                  <input type="radio" name="lang" id="en" onChange={() => selectLang("en")}/> English - EN{" "}
                 </label>
               </li>
               <li className="collection__item">
                 <label htmlFor="es">
-                  <input type="radio" name="lang" id="es" /> Español - ES{" "}
+                  <input type="radio" name="lang" id="es" onChange={() => selectLang("es")}/> Español - ES{" "}
                 </label>
               </li>
               <li className="collection__item">
                 <label htmlFor="zn">
-                  <input type="radio" name="lang" id="zn" /> 简体中文 - ZH{" "}
+                  <input type="radio" name="lang" id="zn" onChange={() => selectLang("zh")} /> 简体中文 - ZH{" "}
                 </label>
               </li>
               <li className="collection__item">
                 <label htmlFor="de">
-                  <input type="radio" name="lang" id="de" /> Deutsch - DE{" "}
+                  <input type="radio" name="lang" id="de" onChange={() => selectLang("de")} /> Deutsch - DE{" "}
                 </label>
               </li>
               <li className="collection__item">
                 <label htmlFor="pt">
-                  <input type="radio" name="lang" id="pt" /> Português - PT{" "}
+                  <input type="radio" name="lang" id="pt" onChange={() => selectLang("pt")} /> Português - PT{" "}
                 </label>
               </li>
               <li className="collection__item">
                 <label htmlFor="zh">
-                  <input type="radio" name="lang" id="zh" /> 繁體中文 - ZH{" "}
+                  <input type="radio" name="lang" id="zh" onChange={() => selectLang("zh")} /> 繁體中文 - ZH{" "}
                 </label>
               </li>
               <li className="collection__item">
@@ -136,8 +176,8 @@ function Header({ func, condition }) {
                 </label>
               </li>
               <li className="collection__item">
-                <label htmlFor="he">
-                  <input type="radio" name="lang" id="he" /> עברית - HE{" "}
+                <label htmlFor="uz">
+                  <input type="radio" name="lang" id="uz" onChange={() => selectLang("uz")}/> O'zbekcha - Uz
                 </label>
               </li>
               <li className="collection__item">
@@ -148,25 +188,34 @@ function Header({ func, condition }) {
             </ul>
           </div>
         </div>
-        <Link className="account_list" to="/login">
+
+        <Link
+          onClick={() => setHover(true)}
+          className="account_list"
+          to="/login"
+        >
           <div
             className="header_accountLists"
-            style={sign ? { zIndex: "5" } : { zIndex: "0" }}
             onMouseOver={() => {
               setSign(true);
-            }}
+              setHover(false)
+            }} 
             onMouseOut={() => setSign()}
           >
-            <p>Hello, Sign in</p>
+            <p> {t("hello")} </p>
             <h3>
-              Account & Lists
+              {t("list")}
               <FiChevronDown />
             </h3>
           </div>
           <div
             className="signIn_hover"
-            onMouseOver={() => setSign(true)}
-            onMouseOut={() => setSign()}
+            onMouseOver={() => {
+              setSign(true);
+            }}
+            onMouseOut={() => {
+              setSign();
+            }}
           >
             <Link to="/login">
               <button>Sign in</button>
@@ -216,14 +265,14 @@ function Header({ func, condition }) {
         )}
 
         <div className="header_orders">
-          <p>Returns</p>
-          <h3>& Orders</h3>
+          <p> {t("return")} </p>
+          <h3> {t("order")} </h3>
         </div>
         <Link to="/cart">
           <div className="header_cart">
             <h4>
               <FiShoppingCart />
-              Cart
+              {t("cart")}
             </h4>
           </div>
         </Link>
@@ -232,18 +281,24 @@ function Header({ func, condition }) {
         <ul className="nav_ul">
           <li onClick={func}>
             <HiMenu />
-            All
+            {t("a")}
           </li>
-          <li>Today's Deals</li>
-          <li>Customer Service</li>
-          <li>Registry</li>
-          <li>Gift Cards</li>
-          <li>Sell</li>
+          <li>{t("offers")}</li>
+          <li>{t("service")}</li>
+          <li>{t("registry")} </li>
+          <li>{t("gift")} </li>
+          <li> {t("sell")} </li>
         </ul>
       </div>
       <div
         className="location_city_box"
-        style={location2 ? { display: "block" } : { display: "none" }}
+        style={
+          locationBoshqacha
+            ? { display: "none" }
+            : location2
+            ? { display: "block" }
+            : { display: "none" }
+        }
       >
         <div className="div_choose">
           <h2>Choose your location</h2>
@@ -256,27 +311,27 @@ function Header({ func, condition }) {
           <Link to="/login" className="btn_sd">
             <span>Sign in to see your addresses</span>
           </Link>
-          <div className="line_location">
-            <div className="line2"></div>
-            <p className="p">or enter a US zip code</p>
-            <div className="line2"></div>
-          </div>
+          <p className="p">or enter a US zip code</p>
           <div className="div_inp_btn">
             <input type="text" />
             <button>Apply</button>
           </div>
-          <div className="line_location">
-            <div className="line3"></div>
-            <p className="p">or</p>
-            <div className="line3"></div>
-          </div>
-          <select className="select_city" id="">
-            <option value="">Uzbekistan</option>
-            <option value="">England</option>
-            <option value="">America</option>
-            <option value="">Russia</option>
+          <p className="p">or</p>
+          <select
+            onChange={(e) => setDeliverLocationValue(e.target.value)}
+            className="select_city"
+            value={deliverLocationValue}
+            id=""
+          >
+            <option value="Uzbekistan">Uzbekistan</option>
+            <option value="England">England</option>
+            <option value="America">America</option>
+            <option value="Russia">Russia</option>
           </select>
         </div>
+        <button onClick={() => setLocationBoshqacha(true)} className="apply">
+          Done
+        </button>
       </div>
     </>
   );

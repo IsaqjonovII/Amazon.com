@@ -1,12 +1,25 @@
-import React from 'react';
-import './ZoomImage.css'
+import React from "react";
+import "./ZoomImage.css";
 
-const ZoomImage = ({image, left, top, overflow}) => {
-    return (
-        <div className="zoomimage" style={overflow ? {backgroundImage: `url(${image})`, backgroundPosition: `${-left}px ${-top+100}px`,display: "none"} : {backgroundImage: `url(${image})`, backgroundPosition: `${-left}px ${-top+200}px`}}>
-            
-        </div>
-    )
-}
+const ZoomImage = ({ image, left, top, overflow, state, state2 }) => {
+  return (
+    <div
+      onClick={() => state(false)}
+      className="zoomimage"
+      style={
+        overflow
+          ? {
+              backgroundImage: `url(${image})`,
+              backgroundPosition: `${-left}px ${-top + 100}px`,
+              display: "none",
+            }
+          : {
+              backgroundImage: `url(${image})`,
+              backgroundPosition: `${-left}px ${-top + 200}px`,
+            }
+      }
+    ></div>
+  );
+};
 
-export default ZoomImage
+export default ZoomImage;

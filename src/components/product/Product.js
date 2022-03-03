@@ -1,7 +1,6 @@
 import React from "react";
 import "./Product.css";
 import { Link } from "react-router-dom";
-import { useEffect } from "react";
 
 const Product = ({ data, object }) => {
   return (

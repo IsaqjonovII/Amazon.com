@@ -1,0 +1,127 @@
+.product-info {
+  width: 100%;
+  padding: 0px 100px;
+  background-color: #fff;
+  padding-bottom: 50px;
+}
+
+.product-info_header {
+  width: 100%;
+  height: 70px;
+  background-color: #f5f5f7;
+}
+
+.back_result {
+  margin-top: 15px;
+  display: flex;
+  align-items: center;
+}
+
+.fetch_image {
+  display: flex;
+  /* margin-left: 300px; */
+}
+.image_wrapper {
+  display: flex;
+  margin-top: 30px;
+}
+.image__wrapperzoom {
+  height: 600px;
+  width: 600px;
+  min-width: 600px;
+  overflow: hidden;
+  background-color: red;
+  margin-left: 20px;
+  position: relative;
+}
+
+.fetch_image img {
+  width: 50px;
+}
+
+.iphone_first_image {
+  height: 600px;
+  width: 600px;
+  min-width: 600px;
+  object-fit: cover;
+}
+
+.description_phone {
+  font-size: 30px;
+  width: 500px;
+  margin-left: 25px;
+  font-weight: 500;
+}
+
+.see_all {
+  width: 242px;
+  height: 185px;
+  padding: 14px 18px;
+  border-radius: 8px;
+  box-shadow: 0px 0px 2px #6b6b6b;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.add_to:last-child {
+  background-color: gold;
+  cursor: pointer;
+}
+
+.see_all .see_all_btn {
+  width: 204px;
+  height: 29px;
+  border-radius: 7px;
+  border: none;
+  outline: none;
+  box-shadow: 0px 0px 2px #6b6b6b;
+  background-color: #fff;
+}
+
+.see_all p {
+  display: flex;
+  align-items: center;
+}
+
+.see_all_seperator {
+  width: 100%;
+  height: 1px;
+  background-color: #dddddd;
+  margin: 0 auto;
+}
+
+.add_to {
+  width: 204px;
+  height: 29px;
+  background-color: rgb(235, 235, 235);
+  border-radius: 3px;
+  border: 1px solid #adadad;
+  outline: none;
+  font-size: 14px;
+  display: flex;
+  /* justify-content: start; */
+  align-items: center;
+  padding-left: 15px;
+}
+.prev {
+  /* cursor: none; */
+  width: 240px;
+  height: 240px;
+  z-index: 100;
+  position: absolute;
+  background-color: rgba(6, 159, 254, 0.366);
+}
+.preview_images {
+  display: flex;
+  flex-direction: column;
+}
+
+.preview_images > img {
+  width: 100px;
+  margin: 10px;
+}
+
+.product_description {
+  padding: 20px;
+}

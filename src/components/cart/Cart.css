@@ -1,0 +1,88 @@
+.div_sign_up_or_create_account {
+  width: 1564px;
+  height: 351.33px;
+  background-color: #fff;
+  margin-left: 17px;
+  margin-top: 30px;
+  display: flex;
+  align-items: center;
+}
+
+.div_sign_up_or_create_account > img {
+  width: 522.21px;
+  height: 296.48px;
+  /* background-color: red; */
+  object-fit: cover;
+  margin-left: 25px;
+}
+
+.div_sign_up_or_create_account h2 {
+  color: #0f1111;
+}
+
+.div_sign_up_or_create_account .link_deals {
+  text-decoration: none;
+  color: #007185;
+  list-style: none;
+}
+
+.div_sign_up_or_create_account .link_deals:hover {
+  color: red;
+  text-decoration: underline;
+}
+
+.link_cart_login {
+  background-color: #ffd814;
+  width: auto;
+  height: 32.98px;
+  padding: 0 15px;
+  border: 1px solid #d5d9d9;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: 10px;
+  word-spacing: 3px;
+  color: #000;
+}
+
+.link_deals_and_h2 {
+  margin-top: -130px;
+  margin-left: 30px;
+}
+
+.div_btn_cart {
+  margin: 20px 30px;
+}
+
+.link_cart_login2 {
+  width: auto;
+  height: 32.98px;
+  padding: 0 15px;
+  border: 1px solid #d5d9d9;
+  background-color: #fff;
+  font-weight: 400;
+  cursor: pointer;
+  border-radius: 10px;
+  margin-left: 10px;
+  word-spacing: 3px;
+  color: #000;
+}
+
+.div_span_div {
+  width: 1162px;
+  /* margin-left: 17px;
+  margin-top: 25px; */
+  /* background-color: red; */
+  margin: 17px 20px;
+  font-weight: 500;
+  word-spacing: 2px;
+  color: #000;
+  font-size: 12px;
+}
+
+.empty_div {
+  width: 1564px;
+  height: 74px;
+  background-color: #fff;
+  margin-left: 17px;
+  margin-top: 25px;
+}

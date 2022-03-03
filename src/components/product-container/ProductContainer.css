@@ -1,0 +1,13 @@
+.product__container{
+    width: 75%;
+    min-height: 100vh;
+    height: auto;
+    margin: 0px auto;
+    margin-top: -400px;
+    margin-bottom: 200px;
+    z-index: 2;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    position: relative;
+}

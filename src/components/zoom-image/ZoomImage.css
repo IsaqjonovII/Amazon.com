@@ -1,0 +1,7 @@
+.zoomimage{
+    flex: 1;
+    height: 425px;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    background-size: 300%;
+}

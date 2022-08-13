@@ -570,7 +570,7 @@
 
   .header__delivery h3 {
     padding: 4px 5px;
-    background-color: #1e5cba;
+    /* background-color: #1e5cba; */
     font-size: 11px;
     display: flex;
     align-items: center;
@@ -580,17 +580,17 @@
   .header_accountLists {
     width: 130px;
     font-size: 10px;
-    background-color: #1e5cba;
+    /* background-color: #1e5cba; */
   }
 
   .header_orders {
     width: 130px;
     font-size: 9px;
-    background-color: #3c3c3c;
+    /* background-color: #3c3c3c; */
   }
 
   .header_cart {
-    background-color: #1e5cba;
+    /* background-color: #1e5cba; */
     display: flex;
     justify-content: center;
     align-items: center;

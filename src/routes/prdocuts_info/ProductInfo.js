@@ -75,7 +75,7 @@ const ProductInfo = () => {
                         ? { boxShadow: "0px 0px 10px orange" }
                         : { boxShadow: "0px 0px 10px transparent" }
                     }
-                    className="div_hover_emas_click"
+                    className="div_hover_emas_click" key={index}
                   >
                     <img
                       key={index}
@@ -125,13 +125,13 @@ const ProductInfo = () => {
             </div>
 
             <div className="product_description">
-              <h1>{productInfo?.name}</h1>
+              <h2>{productInfo?.name}</h2>
               <div className="stars">
                 {productInfo &&
                   new Array(Math.floor(productInfo?.ratings))
                     .fill()
-                    .map((i) => (
-                      <p>
+                    .map((i, index) => (
+                      <p key={index}>
                         <FaStar />
                       </p>
                     ))}
@@ -208,8 +208,8 @@ const ProductInfo = () => {
                 {productInfo &&
                   new Array(Math.floor(productInfo?.ratings))
                     .fill()
-                    .map((i) => (
-                      <p>
+                    .map((i, inx) => (
+                      <p key={inx}>
                         <FaStar />
                       </p>
                     ))}
@@ -227,10 +227,10 @@ const ProductInfo = () => {
                         ? { boxShadow: "0px 0px 10px orange" }
                         : { boxShadow: "0px 0px 10px transparent" }
                     }
+                    key={index}
                     className="div_hover_emas_click"
                   >
                     <img
-                      key={index}
                       onClick={() => setPreviewImage(index)}
                       src={img?.url}
                       alt=""

@@ -2,20 +2,30 @@ import React from "react";
 import "./Cart.css";
 import svg from "./kettle-desaturated._CB445243794_.svg";
 import { Link } from "react-router-dom";
-import { useStateValue } from '../../context/StateProvider';
+import { useStateValue } from "../../context/StateProvider";;
 
 function Cart() {
-  const [{cart}] = useStateValue();
-  console.log(cart)
-  return cart?.length ? <div>
-    {
-      cart?.map(cartProduct => 
-        
-        <div>{cartProduct.name}</div>
-        )
-    }
+  const [{ cart }] = useStateValue();
+  console.log(cart);
+  return cart?.length ? (
+    <div className="cart_items">
+      {cart?.map((cartProduct) => (
 
-  </div> : (
+        <div className="cart__item" key={cartProduct._id}>
+          <div className="item_images">
+            <img src={cartProduct.image[0].url} alt="" />
+          </div>
+
+          <div className="item_infos">
+            <h3 className="info_titles">{cartProduct.name}</h3>
+            <small>{cartProduct.sale}% discount</small>
+           
+            <h3>${cartProduct.price}</h3>
+            </div>
+        </div>
+      ))}
+    </div>
+  ) : (
     <div>
       <div className="div_sign_up_or_create_account">
         <img src={svg} alt="" />

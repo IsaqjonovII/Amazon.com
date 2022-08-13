@@ -19,14 +19,14 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-body::-webkit-scrollbar {
+::-webkit-scrollbar {
   width: 10px;
   background-color: transparent;
 }
 
-body::-webkit-scrollbar-thumb {
+::-webkit-scrollbar-thumb {
   width: 2px;
-  border-radius: 10px;
+  /* border-radius: 10px; */
   background-color: rgba(0, 0, 0, 0.322);
 }
 

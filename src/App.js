@@ -1,7 +1,7 @@
-import "./styles/App.css";
 import { useState } from "react";
-import Home from "./routes/home/Home";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import "./styles/App.css";
+import Home from "./routes/home/Home";
 import Login from "./routes/login/Login";
 import Account from "./routes/create-account/Account";
 import Seemore from "./routes/seemore/Seemore";
@@ -14,6 +14,7 @@ import Cart from "./components/cart/Cart";
 import ProductInfo from "./routes/prdocuts_info/ProductInfo";
 import CreateProducts from "./routes/create-products/CreateProducts";
 import BackToTop from "./components/backtotop/BackToTop";
+import Customer from "./components/customer/Customer"
 
 function App() {
   const [sidebarActive, setSidebarActive] = useState(false);
@@ -30,12 +31,13 @@ function App() {
         <Switch>
           <Route exact path="/" component={Home} />
           <Route path="/login" component={Login} />
-          <Route path="/account" component={Account} />
+          <Route path="/register" component={Account} />
           <Route exact path="/seemore" component={Seemore} />
           <Route exact path="/seemore/products" component={Products} />
           <Route path="/shopnow" component={Shopnow} />
           <Route path="/cart" component={Cart} />
           <Route path="/new" component={CreateProducts} />
+          <Route path="/customer" component={Customer} />
           <Route path="/seemore/products/:productId" component={ProductInfo}/>
         </Switch>
         <Footer />

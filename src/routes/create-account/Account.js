@@ -8,6 +8,7 @@ function Account() {
   const history = useHistory();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [err, setErr] = useState('')
 
 
   const createAccount = (e) => {
@@ -18,7 +19,7 @@ function Account() {
           history.push("/")
         }
       })
-      .catch(err => console.log(err));
+      .catch(err => setErr(err.message));
   }
   return (
     <div>

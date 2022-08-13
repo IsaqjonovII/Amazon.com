@@ -4,21 +4,21 @@ import { Link } from "react-router-dom";
 import { HiOutlineLocationMarker, HiMenu } from "react-icons/hi";
 import { FiSearch, FiChevronDown, FiShoppingCart } from "react-icons/fi";
 import { useLocation } from "react-router-dom";
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "react-i18next";
 
 function Header({ func, condition }) {
   const { i18n, t } = useTranslation();
   const [location2, setLocation2] = useState(false);
   let location = useLocation();
-  console.log(location.pathname);
+  // console.log(location.pathname);
   useEffect(() => {
     setTimeout(() => {
       setSigInPopUp(false);
     }, 7000);
   }, []);
   const selectLang = (lang) => {
-      i18n.changeLanguage(lang);
-  }
+    i18n.changeLanguage(lang);
+  };
   const [sign, setSign] = useState(false);
   const [deliverLocationValue, setDeliverLocationValue] = useState("");
   const [hover, setHover] = useState(false);
@@ -27,11 +27,11 @@ function Header({ func, condition }) {
   const [searchbarActive, setSearchbarActive] = useState(false);
   const [languageActive, setLanguageActive] = useState(false);
   const [selectValue, setSelectValue] = useState("all departments");
-  return location.pathname === "/login" || location.pathname === "/account" ? (
+  return location.pathname === "/login" || location.pathname === "/register" ? (
     <></>
   ) : (
     <>
-      <div id="top"  className="header">
+      <div id="top" className="header">
         <Link to="/">
           <div className="header__logo">
             <img
@@ -55,7 +55,7 @@ function Header({ func, condition }) {
             {locationBoshqacha ? deliverLocationValue : "Uzbekistan"}
           </h3>
         </div>
-        <divm
+        <div
           className="header__searchbar"
           style={
             searchbarActive
@@ -68,28 +68,27 @@ function Header({ func, condition }) {
             style={{ width: selectValue.length * 10 + "px" }}
             onChange={(e) => setSelectValue(e.target.value)}
           >
-            <option value="all departments">{t("all")}</option>
-            <option value="art & carfts">Arts & Crafts</option>
+            <option value="alldeartments">{t("all")}</option>
+            <option value="art  carfts">Arts & Crafts</option>
             <option value="automotive">Automotive</option>
-            <option value="baby">Baby</option>
-            <option value="beauty & personal care">Beauty & Personal Care</option>
-            <option value="books">Books</option>
-            <option value="boy's fashion">Boy's Fashion</option>
-            <option value="comp uters">Computers</option>
-            <option value="deals">Deals</option>
-            <option value="digital music">Digital Music</option>
+            <option value="bas dby">Baby</option>
+            <option value="beautpersonal care">
+              Beauty & Personal Care
+            </option>
+            <option value="booadks">Books</option>
+            <option value="boss fashion">Boy's Fashion</option>
+            <option value="compsuters">Computers</option>
+            <option value="dealass">Deals</option>
+            <option value="digitamusic">Digital Music</option>
             <option value="electroics">Electronics</option>
-            <option value="health household">Health & Household</option>
-            <option value="Home & kitchen">Home & Kitchen</option>
-            <option value="Indust r ientific">Industrial & Scientific</option>
-            <option value="kindle store">Kindle Store</option>
-            <option value="lu  gga ge">Luggage</option>
-            <option value="men's fashion">Men's fashion</option>
-            <option value="Movies & tv">Movies & TV</option>
+            <option value="healt  household">Health & Household</option>
+            <option value="Home  kitchen">Home & Kitchen</option>
+            <option value="Indust isentific">Industrial & Scientific</option>
+            <option value="kindlestore">Kindle Store</option>
+            <option value="luggasage">Luggage</option>
+            <option value="men  fashion">Men's fashion</option>
+            <option value="Movies   tv">Movies & TV</option>
             <option value="music,cds&vindyls">Music, CDs & Vinyls</option>
-
-
-
           </select>
           <input
             type="text"
@@ -100,7 +99,7 @@ function Header({ func, condition }) {
             {" "}
             <FiSearch />{" "}
           </button>
-        </divm>
+        </div>
         <div
           className={`fade ${
             searchbarActive || languageActive || sign || location2
@@ -142,32 +141,68 @@ function Header({ func, condition }) {
             <ul className="select__collection">
               <li className="collection__item">
                 <label htmlFor="en">
-                  <input type="radio" name="lang" id="en" onChange={() => selectLang("en")}/> English - EN{" "}
+                  <input
+                    type="radio"
+                    name="lang"
+                    id="en"
+                    onChange={() => selectLang("en")}
+                  />{" "}
+                  English - EN{" "}
                 </label>
               </li>
               <li className="collection__item">
                 <label htmlFor="es">
-                  <input type="radio" name="lang" id="es" onChange={() => selectLang("es")}/> Español - ES{" "}
+                  <input
+                    type="radio"
+                    name="lang"
+                    id="es"
+                    onChange={() => selectLang("es")}
+                  />{" "}
+                  Español - ES{" "}
                 </label>
               </li>
               <li className="collection__item">
                 <label htmlFor="zn">
-                  <input type="radio" name="lang" id="zn" onChange={() => selectLang("zh")} /> 简体中文 - ZH{" "}
+                  <input
+                    type="radio"
+                    name="lang"
+                    id="zn"
+                    onChange={() => selectLang("zh")}
+                  />{" "}
+                  简体中文 - ZH{" "}
                 </label>
               </li>
               <li className="collection__item">
                 <label htmlFor="de">
-                  <input type="radio" name="lang" id="de" onChange={() => selectLang("de")} /> Deutsch - DE{" "}
+                  <input
+                    type="radio"
+                    name="lang"
+                    id="de"
+                    onChange={() => selectLang("de")}
+                  />{" "}
+                  Deutsch - DE{" "}
                 </label>
               </li>
               <li className="collection__item">
                 <label htmlFor="pt">
-                  <input type="radio" name="lang" id="pt" onChange={() => selectLang("pt")} /> Português - PT{" "}
+                  <input
+                    type="radio"
+                    name="lang"
+                    id="pt"
+                    onChange={() => selectLang("pt")}
+                  />{" "}
+                  Português - PT{" "}
                 </label>
               </li>
               <li className="collection__item">
                 <label htmlFor="zh">
-                  <input type="radio" name="lang" id="zh" onChange={() => selectLang("zh")} /> 繁體中文 - ZH{" "}
+                  <input
+                    type="radio"
+                    name="lang"
+                    id="zh"
+                    onChange={() => selectLang("zh")}
+                  />{" "}
+                  繁體中文 - ZH{" "}
                 </label>
               </li>
               <li className="collection__item">
@@ -177,7 +212,13 @@ function Header({ func, condition }) {
               </li>
               <li className="collection__item">
                 <label htmlFor="uz">
-                  <input type="radio" name="lang" id="uz" onChange={() => selectLang("uz")}/> O'zbekcha - Uz
+                  <input
+                    type="radio"
+                    name="lang"
+                    id="uz"
+                    onChange={() => selectLang("uz")}
+                  />{" "}
+                  O'zbekcha - Uz
                 </label>
               </li>
               <li className="collection__item">
@@ -198,8 +239,8 @@ function Header({ func, condition }) {
             className="header_accountLists"
             onMouseOver={() => {
               setSign(true);
-              setHover(false)
-            }} 
+              setHover(false);
+            }}
             onMouseOut={() => setSign()}
           >
             <p> {t("hello")} </p>
@@ -221,9 +262,8 @@ function Header({ func, condition }) {
               <button>Sign in</button>
             </Link>
             <p style={{ fontSize: "12px", marginTop: "10px" }}>
-              New customer?{" "}
-              <a style={{ textDecoration: "none" }} href="##">
-                {" "}
+              New customer?
+              <a style={{ textDecoration: "none" }} href="/login">
                 Start here
               </a>
             </p>
@@ -270,8 +310,8 @@ function Header({ func, condition }) {
         </div>
         <Link to="/cart">
           <div className="header_cart">
-            <h4>
               <FiShoppingCart />
+            <h4>
               {t("cart")}
             </h4>
           </div>
@@ -284,7 +324,9 @@ function Header({ func, condition }) {
             {t("a")}
           </li>
           <li>{t("offers")}</li>
-          <li>{t("service")}</li>
+          <li>
+            <Link to={"/customer"}>{t("service")}</Link>
+          </li>
           <li>{t("registry")} </li>
           <li>{t("gift")} </li>
           <li> {t("sell")} </li>

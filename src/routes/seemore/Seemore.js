@@ -5,7 +5,7 @@ import { seemore_data } from '../../static/seemore_data';
 
 const Seemore = () => {
   const route = useRouteMatch();
-  console.log(route);
+  // console.log(route);
   return <div className='seemore'>
       <img className='seemore_banner' src="https://images-na.ssl-images-amazon.com/images/G/01/AmazonExports/Fuji/2021/June/Fuji_LPHeader_Gamers_en_US.png" alt="" />
       <h1 className='seemore_title'>Featured Categories</h1>

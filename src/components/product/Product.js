@@ -13,11 +13,11 @@ const Product = ({ data, object }) => {
         </Link>
       </div>
       {data.four?.map((product) => (
-        <div className="product2">
+        <div className="product2" key={product.id} >
           <h1>{product?.title}</h1>
           <div className="four">
-            {product.imageObject?.map((img) => (
-              <img src={img} alt="" />
+            {product.imageObject?.map((img, index) => (
+              <img key={index} src={img} alt="" />
             ))}
           </div>
           <Link className="product_link" to={product?.linkRoute}>

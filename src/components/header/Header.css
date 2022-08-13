@@ -107,10 +107,16 @@
 }
 
 .header__logo {
-  width: 140px;
+  width: 10vw;
   height: 50px;
   display: grid;
+  border: 1px solid transparent;
   place-items: center;
+}
+
+.header__logo img {
+  width: 80%;
+  object-fit: cover;
 }
 
 .header__logo:hover {
@@ -124,6 +130,8 @@
 }
 
 .header__delivery {
+  width: 10vw;
+  height: 50px;
   padding: 4px 10px;
   border-radius: 4px;
   margin: 0px 10px;
@@ -138,7 +146,7 @@
 .header__delivery > p {
   color: #cecece;
   padding-left: 24px;
-  font-size: 14px;
+  font-size: clamp(6px, 10px, 14px);
 }
 
 .header__searchbar {
@@ -153,7 +161,7 @@
   border: none;
   outline: none;
   text-indent: 10px;
-  min-width: 80px;
+  width: 80px;
   border-right: 1px solid #c9c7c7;
 }
 
@@ -235,6 +243,7 @@
   padding: 20px;
   font-size: 14px;
   z-index: 11;
+  transition: 300ms ease-in;
 }
 
 .learn__more {
@@ -337,7 +346,7 @@
   align-items: center;
   z-index: 100;
   position: absolute;
-  top: 58px;
+  top: 56px;
   right: 85px;
   border-radius: 4px;
   box-shadow: 0px 0px 3px rgb(56, 56, 56);
@@ -353,6 +362,10 @@
   border: 1px solid rgb(192, 127, 6);
   font-weight: 500;
   margin-top: 15px;
+}
+
+.signIn_hover > p > a {
+  color: #1e5cba;
 }
 
 .signIn_line {
@@ -378,6 +391,11 @@
 
 .signIn_ul_list li {
   font-size: 14px;
+}
+.signIn_ul_list > li:hover,
+.signIn_ul_acc > li:hover {
+  color: #eb992f;
+  text-decoration: underline;
 }
 
 .signIn_ul_seperator {
@@ -522,4 +540,71 @@
   border: none;
   margin-left: 315px;
   margin-top: 20px;
+}
+
+@media screen and (max-width: 1500px) {
+  .header__delivery p {
+    font-size: 12px;
+  }
+
+  .header__delivery h3 {
+    padding: 4px 5px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .searchbar__select {
+    font-size: 12px;
+  }
+
+  .searchbar__select option {
+    font-size: 10px;
+  }
+}
+
+@media screen and (max-width: 1300px) {
+  .header__delivery p {
+    font-size: 8px;
+  }
+
+  .header__delivery h3 {
+    padding: 4px 5px;
+    background-color: #1e5cba;
+    font-size: 11px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .header_accountLists {
+    width: 130px;
+    font-size: 10px;
+    background-color: #1e5cba;
+  }
+
+  .header_orders {
+    width: 130px;
+    font-size: 9px;
+    background-color: #3c3c3c;
+  }
+
+  .header_cart {
+    background-color: #1e5cba;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .header_cart h4 {
+    display: none;
+  }
+
+  .searchbar__select {
+    font-size: 10px;
+  }
+
+  .searchbar__select option {
+    font-size: 8px;
+  }
 }

@@ -50,17 +50,17 @@ const Products = () => {
     .slice(pagesVisited, pagesVisited + usersPerPage)
     .map((user) => {
       return (
-        <>
+        <div key={user._id}>
           <Link className="link" key={user._id} to={`${url}/${user._id}`}>
             <Item data={user} />
           </Link>
-        </>
+        </div>
       );
     });
 
   return (
     <>
-      <div className="product_header">
+      <div className="product_header_sort">
         <p>1-16 of over 10,000 results for "nintendo"</p>
         <select className="product_select">
           <option value="">Sort by: Featured</option>
@@ -75,9 +75,9 @@ const Products = () => {
           <div className="product_sidebar">
             <ul className="product_sidebar_ul">
               <h4 style={{ fontWeight: "550" }}>Climate Pledge Friendly</h4>
-              <h4 style={{ fontWeight: "400" }}>
-                <input type="checkbox" /> Climate Pledge Friendly
-              </h4>
+              <label htmlFor="check" style={{ fontWeight: "400" }}>
+                <input type="checkbox" id="check" /> Climate Pledge Friendly
+              </label>
               <h4 style={{ fontWeight: "630", marginTop: "15px" }}>
                 Department
               </h4>
@@ -97,25 +97,37 @@ const Products = () => {
               </h4>
               <h4>Featured Brands</h4>
               <li>
-                <input type="checkbox" /> Nintendo
+                <label htmlFor="nin">
+                  <input type="checkbox" id="nin" /> Nintendo
+                </label>
               </li>
               <li>
-                <input type="checkbox" /> ACTIVISION
+                <label htmlFor="activision">
+                  <input type="checkbox" id="activision" /> ACTIVISION
+                </label>
               </li>
               <li>
-                <input type="checkbox" /> Ubisoft
+                <label htmlFor="ubisoft">
+                  <input type="checkbox" id="ubisoft" /> Ubisoft
+                </label>
               </li>
               <li>
-                <input type="checkbox" /> eXtremeRate
+                <label htmlFor="rate">
+                  <input type="checkbox" id="rate" /> eXtremeRate
+                </label>
               </li>
               <li>
-                <input type="checkbox" /> Electronic Arts
+                <label htmlFor="arts">
+                  <input type="checkbox" id="arts" /> Electronic Arts</label> 
               </li>
               <li>
-                <input type="checkbox" /> TACKY DESIGN
+                <label htmlFor="design">
+                  <input type="checkbox" id="design" /> TACKY DESIGN</label> 
               </li>
               <li>
-                <input type="checkbox" /> THQ
+                <label htmlFor="thq">
+                  <input type="checkbox" id="thq" /> THQ
+                </label>
               </li>
               <h4>Price</h4>
               <li>Under $10</li>
@@ -124,8 +136,8 @@ const Products = () => {
               <li>$25 to $35</li>
               <li>$35 & Above</li>
               <li className="price_btn">
-                <button className="price_min">$ Min</button>
-                <button className="price_max">$ Max</button>
+                <input className="price_min" type="number" placeholder="$ Min" />
+                <input className="price_max" type="number" placeholder="$ Max" />
                 <button className="price_go">Go</button>
               </li>
             </ul>

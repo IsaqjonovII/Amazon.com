@@ -1,13 +1,18 @@
 .item {
   flex: 1;
-  height: 400px;
-  background-color: #fff;
-  min-height: 400px;
+  height: 300px;
+  background-color: #ffffff;
+  min-height: 300px;
   margin: 20px auto;
   margin-right: 70px;
-  border: 1px solid #e4e4e4;
+  border: 1px solid #b9b8b8;
   display: flex;
-  padding: 40px;
+  padding: 20px 30px;
+  border-radius: 4px;
+}
+
+small {
+  color: #f16b31;
 }
 
 .item_image {
@@ -22,15 +27,30 @@
   font-weight: 400;
 }
 
-.item_info > p {
-  color: #636060;
-  font-size: 20px;
-  padding: 10px 0;
+.info_title {
+  color: #0f1111;
+  font-weight: 400;
 }
 
+.info_title:hover {
+  color: #f16b31;
+}
+
+.item_info > h3:nth-child(2) {
+  font-weight: 500;
+  margin: 5px 0px;
+}
+
+.item_info > p {
+  color: #2a2a2a;
+  font-size: 15px;
+  padding: 5px 0;
+}
+
+
 .info_ratings {
-  width: 300px;
-  height: 80px;
+  width: 100px;
+  height: 30px;
   position: relative;
 }
 
@@ -54,6 +74,7 @@
   background-color: #fff;
   position: absolute;
   top: 40px;
+  left: -100px;
   z-index: 1;
   display: block;
   padding: 25px;
@@ -88,14 +109,12 @@
   width: 100%;
   height: auto;
   min-height: 200px;
-  /* background-color: dodgerblue; */
   margin: 10px auto;
 }
 
 .anime_collection li {
   width: 300px;
   height: 30px;
-  /* background-color: red; */
   margin-top: 10px;
   display: flex;
   align-items: center;
@@ -128,12 +147,12 @@
   position: absolute;
   top: 0;
   left: -1px;
-  width: 85%;
+  width: 55%;
   height: 100%;
   background-color: #ffa41c;
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
-  animation: full .5s linear 1;
+  animation: full .6s linear 1;
   transform-origin: left;
 }
 

@@ -580,17 +580,14 @@
   .header_accountLists {
     width: 130px;
     font-size: 10px;
-    /* background-color: #1e5cba; */
   }
 
   .header_orders {
     width: 130px;
     font-size: 9px;
-    /* background-color: #3c3c3c; */
   }
 
   .header_cart {
-    /* background-color: #1e5cba; */
     display: flex;
     justify-content: center;
     align-items: center;

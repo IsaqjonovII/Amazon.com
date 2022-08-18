@@ -37,12 +37,12 @@ function Cart() {
             </Link>
           </div>
           <div className="div_btn_cart">
-            <Link to="/account">
+            <Link to="/login">
               <button className="link_cart_login">
                 Sign in to your account
               </button>
             </Link>
-            <Link to="/login">
+            <Link to="/register">
               <button className="link_cart_login2">Sign up now</button>
             </Link>
           </div>

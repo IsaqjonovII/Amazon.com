@@ -15,7 +15,7 @@ const Login = () => {
         e.preventDefault();
         auth.signInWithEmailAndPassword(email, password)
             .then(user => {
-                if(user){
+                if (user) {
                     history.push("/")
                 }
             })
@@ -32,13 +32,13 @@ const Login = () => {
         let recaptcha = new firebase.auth.RecaptchaVerifier('recaptcha-container');
         firebase.auth().signInWithPhoneNumber(number, recaptcha)
             .then(e => {
-              let code = prompt("Iltimos konfirmatsiya kodni kiriting")
-              if(code === null){
-                  return
-              }
-              e.confirm(code).then(user => {
-                  console.log(user)
-              })
+                let code = prompt("Iltimos konfirmatsiya kodni kiriting")
+                if (code === null) {
+                    return
+                }
+                e.confirm(code).then(user => {
+                    console.log(user)
+                })
             })
             .catch(err => console.log(err));
 
@@ -46,46 +46,53 @@ const Login = () => {
 
     return (
         <div className="login">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/2560px-Amazon_logo.svg.png" alt="" />
+            <Link to="/">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/2560px-Amazon_logo.svg.png" alt="" /></Link>
             <form onSubmit={loginUser}>
                 <div className="sign_in">
                     <h1>Sign-In</h1>
-                    <h5>Email or mobile phone number</h5>
-                    <input type="email" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)}/>
+                    <h5>Email or phone number</h5>
+                    <input type="email" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} />
                     <h5>Password</h5>
-                        <input
+                    <input
                         type="password"
                         placeholder="At least 6 characters"
                         required
                         value={password}
                         onChange={e => setPassword(e.target.value)}
                         minLength={8}
-                        />
+                    />
                     <button className="auth_btn" type="submit">Continue</button>
                     <span>By continuing, you agree to Amazon's <a href="##"> Conditions of Use and Privacy Notice.</a></span>
-                    <a href="##"><AiFillCaretRight/> Need help?</a>
+                    <a href="##"><AiFillCaretRight /> Need help?</a>
                 </div>
             </form>
-            <button onClick={signInwithGoogle}> <FcGoogle/> Sign in with Google</button>
-            <div className="new_amazon">
-                <input type="text" placeholder="Type your phonenumber" value={number} onChange={(e) => setNumber(e.target.value)}/>
+            <button onClick={signInwithGoogle} className="google_btn"> <FcGoogle /> Sign in with Google</button>
+
+            <div className="btn_container">
+                <input type="text"
+                    placeholder="Enter your phone number"
+                    value={number}
+                    onChange={(e) => setNumber(e.target.value)} />
+                <button onClick={verifyThePhone}>Verify</button>
+            </div>
                 <div id="recaptcha-container"></div>
-                <button onClick={verifyThePhone}>Verify the phone</button>
-                    <div className="line"></div>
-                    <span>New to Amazon?</span>
-                    <div className="line"></div>
-                </div>
-                <Link to="/account">
-                   <button className='create_acc_btn'>Craete your Amazon account</button>
-                </Link>
-                <div className="login_copyright">
-                    <div className="login_help">
+            <div className="new_amazon">
+                <div className="line"></div>
+                <span>New to Amazon?</span>
+                <div className="line"></div>
+            </div>
+            <Link to="/account">
+                <button className='create_acc_btn'>Create your Amazon account</button>
+            </Link>
+            <div className="login_copyright">
+                <div className="login_help">
                     <a href="##">Conditin of Use</a>
                     <a href="##">Privacy Notice</a>
                     <a href="##">Help</a>
-                    </div>
-                    <p>© 1996-2022, Amazon.com, Inc. or its affiliates</p>
                 </div>
+                <p>© 1996-2022, Amazon.com, Inc. or its affiliates</p>
+            </div>
         </div>
     )
 }
